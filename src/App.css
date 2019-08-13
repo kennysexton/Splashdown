@@ -15,12 +15,23 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(10px + 2.5vmin);
   color: white;
 }
 
 .App-link {
   color: #61dafb;
+}
+
+.App-button {
+  background-color: #FFFFFF;
+  color: #686868;
+  font-size: 0.8em;
+  font-weight: 200;
+  border: 0;
+  border-radius: 5px;
+  padding: 0.8% 1.5%;
+  text-decoration: none;
 }
 
 @keyframes App-logo-spin {
