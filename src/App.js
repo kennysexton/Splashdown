@@ -1,28 +1,40 @@
-import React from 'react';
+import React, { Component } from 'react';
 import logo from './logo.svg';
 import { ScrollTo } from "react-scroll-to";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import './App.css';
 
-function App() {
-  return (
-    <Router>
-    <div className="App">
-      <header className="App-header">
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        <h1>Splashdown</h1>
-        <Link className="App-button" to="/generate/">
-          {/* <button className="App-button"> */}
-          Generate Color Scheme
-        {/* </button> */}
-        </Link>
-      </header>
-    </div>
-    <Route path="/generate" exact component={generate} />
-    </Router>
-  )
-}
+//My Components
+import Welcome from './components/welcome'
+import Colors from './components/colors'
 
+class App extends Component {
+  render() {
+    return (
+      // <Router>
+      // <div className="App">
+      //   <header className="App-header">
+      //     {/* <img src={logo} className="App-logo" alt="logo" /> */}
+      //     <h1>Splashdown</h1>
+      //     <Link className="App-button" to="/generate/">
+      //       {/* <button className="App-button"> */}
+      //       Generate Color Scheme
+      //     {/* </button> */}
+      //     </Link>
+      //   </header>
+      // </div>
+      // <Route path="/generate" exact component={generate} />
+      // <generate />
+      // </Router>
+      <div>
+        <Welcome></Welcome>
+        <Colors></Colors>
+      </div>
+      
+    );
+  }
+
+}
 
 function generate() {
   return (

@@ -2,7 +2,7 @@
   text-align: center;
 }
 
-.App-header {
+.Welcome{
   background-image: linear-gradient(135deg, #85FFBD 0%, #FFFB7D 100%);
   min-height: 100vh;
   display: flex;
@@ -17,7 +17,7 @@
   color: #61dafb;
 }
 
-.App-button {
+.Gen-button {
   background-color: #FFFFFF;
   color: #686868;
   font-size: 0.8em;
