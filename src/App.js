@@ -1,14 +1,33 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import { ScrollTo } from "react-scroll-to";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Unsplash from 'unsplash-js';
+
 import './App.css';
 
 //My Components
 import Welcome from './components/welcome'
 import Colors from './components/colors'
+import ImageGrid from './components/imageGrid.jsx'
+
+
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      imgs: []
+    };
+  }
+
+  componentDidMount() {
+    fetch('https://api.unsplash.com/photos/?client_id=' + process.env.REACT_APP_API_KEY)  
+      .then(response => response.json())
+      .then(data => {
+        this.setState({ imgs: data });
+      })
+      .catch(err => {
+        console.log('Error happened during fetching!', err);
+      });
+  }
   render() {
     return (
       // <Router>
@@ -29,6 +48,9 @@ class App extends Component {
       <div>
         <Welcome></Welcome>
         <Colors></Colors>
+        <ImageGrid data={this.state.imgs} />
+        
+
       </div>
       
     );
