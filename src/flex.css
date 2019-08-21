@@ -1,0 +1,27 @@
+/*  Credit to Jack Nugent
+    Pen - https://codepen.io/jacknugent/pen/LwPMEX
+    Website - https://jacknugent.io/
+*/
+
+section{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  section::after {
+    content: '';
+    flex-grow: 999999999;
+  }
+  .frame{
+    margin: 2px;
+    background-color: violet;
+    position: relative;
+  }
+  i {
+    display: block;
+  }
+  img{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    vertical-align: bottom;
+  }

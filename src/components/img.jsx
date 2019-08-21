@@ -1,10 +1,8 @@
 import React from 'react';
 
-//
-const Img = props => (
-  <li className="img-wrap">
-    <img src={props.url} alt=""/>
-  </li>
+// 
+const Img = props => ( 
+        <img src={props.url} alt="" data-aos="fade-up" />
 );
 
 export default Img;
