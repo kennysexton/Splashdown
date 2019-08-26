@@ -3,7 +3,16 @@ import Img from './img';
 
 const ImgageGrid = props => {
 	const results = props.data;
-	let imgs = results.map(img => <Img url={img.urls.small} alt={img.alt_description} key={img.id} h={Img.height} w={Img.width}/>);
+	let imgs = results.map(img => <Img 
+		url={img.urls.small}
+		alt={img.alt_description}
+		user={img.user.links.html}
+		name={img.user.name}
+		width={img.width}
+		height={img.height}
+		icon={img.user.profile_image.small}
+		key={img.id}/>);
+
 	
 	//let aspectRatio = imgs.height/img.width
 	

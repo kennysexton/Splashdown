@@ -46,3 +46,12 @@
  .green {
     background-color: #85FFBD;
  }
+
+
+ .user_icons {
+   border-radius: 100%;
+ }
+
+ .left {
+   float: left;
+ }
