@@ -7,8 +7,7 @@ const Img = props => (
                 {/* <img src={props.icon} className="user_icons"/>
 
                 <a href={props.user}>{props.name}</a> */}
-        </div>
-       
+        </div>     
 );
 
 export default Img;
