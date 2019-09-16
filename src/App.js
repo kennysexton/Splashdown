@@ -22,16 +22,15 @@ class App extends Component {
     this.state = {
       imgs: [],
       city: getRandomCity()
-    };
-    
+    }; 
   } 
 
   componentDidMount() {
-    fetch('https://api.unsplash.com/photos/?client_id=' + process.env.REACT_APP_API_KEY)  
-    //fetch('https://api.unsplash.com/search/photos/?page=1&per_page=10&query=' + state.city +  '&client_id=' + process.env.REACT_APP_API_KEY)
+    //fetch('https://api.unsplash.com/photos/?client_id=' + process.env.REACT_APP_API_KEY)  
+    fetch('https://api.unsplash.com/search/photos/?query=London, United Kingdom&client_id=' + process.env.REACT_APP_API_KEY)
       .then(response => response.json())
       .then(data => {
-        this.setState({ imgs: data });
+        this.setState({ imgs: data.results });
       })
       .catch(err => {
         console.log('Error happened during fetching!', err);
@@ -41,10 +40,9 @@ class App extends Component {
     return (
       <div>
         <Welcome></Welcome>
-        <Colors></Colors>
+        {/* <Colors></Colors> */}
         <ImageGrid data={this.state.imgs} />
         {this.state.city}
-        
 
       </div>
        
