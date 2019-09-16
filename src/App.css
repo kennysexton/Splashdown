@@ -28,30 +28,7 @@
   text-decoration: none;
 }
 
-.Color-main {  
-  min-height: 80vh;
-  padding: 10vh 6vh;
-  display: flex;
+.background-image {
+  width: 100%;
+  min-height: 100vh;
 }
-
-.Color-swatch {
-  flex: 1;
-}
-
-
- .blue{
-  background-color: #234567;
- }
-
- .green {
-    background-color: #85FFBD;
- }
-
-
- .user_icons {
-   border-radius: 100%;
- }
-
- .left {
-   float: left;
- }
