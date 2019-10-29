@@ -7,10 +7,7 @@
 }
 
 .Welcome{
-  background-image: linear-gradient(135deg, #85FFBD 0%, #FFFB7D 100%);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  position: absolute;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2.5vmin);
@@ -18,6 +15,7 @@
 }
 
 .welcome-button {
+  position: absolute;
   background-color: #FFFFFF;
   color: #686868;
   font-size: 0.8em;
@@ -29,6 +27,10 @@
 }
 
 .background-image {
+  position: absolute;
   width: 100%;
   min-height: 100vh;
+  overflow: hidden;
 }
+
+

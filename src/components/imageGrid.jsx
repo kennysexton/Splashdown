@@ -21,8 +21,8 @@ const ImgageGrid = props => {
 
 	return (
 		<section className="img-grid">
-				{imgs}
-			
+				{/* remove index[0] to show all images */}
+				{imgs[0]}	
 		</section>
 	);
 };

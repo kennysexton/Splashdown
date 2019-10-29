@@ -8,6 +8,7 @@ import './App.css';
 
 //My Components
 import Welcome from './components/welcome'
+import Information from './components/Information'
 import ImageGrid from './components/imageGrid.jsx'
 
 
@@ -29,7 +30,7 @@ class App extends Component {
     
     //fetch('https://api.unsplash.com/photos/?client_id=' + process.env.REACT_APP_API_KEY)  
     console.log('Shown City:  ' + this.state.city)
-    fetch('https://api.unsplash.com/search/photos/?page=1$per_page=2&query=' + this.state.city + '&client_id=' + process.env.REACT_APP_API_KEY)
+    fetch('https://api.unsplash.com/search/photos/?page=1$per_page=1&query=' + this.state.city + '&client_id=' + process.env.REACT_APP_API_KEY)
       .then(response => response.json())
       .then(data => {
         this.setState({ imgs: data.results });
@@ -45,6 +46,7 @@ class App extends Component {
         <ImageGrid data={this.state.imgs} />
         {this.state.city}
         <Welcome></Welcome>
+        <Information></Information>
 
       </div>
        
