@@ -8,7 +8,7 @@ export default class Welcome extends Component {
             <header className="Welcome">
             <h1>Splashdown</h1>
             <button  href="#colordiv" data-aos="fade-up" data-aos-duration="1000" className="welcome-button ">
-                Generate Color Scheme
+                Flight Info
             </button>
             </header>
         </div>

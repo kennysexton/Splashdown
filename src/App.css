@@ -7,11 +7,21 @@
 }
 
 .Welcome{
-  position: absolute;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2.5vmin);
+  filter: blur(1px);
+  -webkit-filter: blur(1px);
+  border-radius: 2%;
+  position: fixed;
+  bottom: 5%;
+  left: 50%;
+  width: 25%;
+  margin-left: -12.5%; /* Negative half of width. */
+  font-size: 20%; /*calc(10px + 1vmin */
   color: white;
+}
+
+h1 {
+  filter: blur(0px);
+  -webkit-filter: blur(0px);
 }
 
 .welcome-button {
@@ -22,7 +32,7 @@
   font-weight: 200;
   border: 0;
   border-radius: 5px;
-  padding: 0.8% 1.5%;
+  margin: 0.8% 1.5%;
   text-decoration: none;
 }
 
@@ -32,5 +42,3 @@
   min-height: 100vh;
   overflow: hidden;
 }
-
-
