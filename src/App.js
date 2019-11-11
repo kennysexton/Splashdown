@@ -7,9 +7,9 @@ import React, { Component } from 'react';
 import './App.css';
 
 //My Components
-import Welcome from './components/welcome'
-import Information from './components/Information'
-import ImageGrid from './components/imageGrid.jsx'
+import CityName from './components/cityName'
+import ImageGrid from './components/imageGrid'
+import Weather from './components/weather'
 
 
 // List of cities
@@ -21,14 +21,14 @@ class App extends Component {
     super();
     this.state = {
       imgs: [],
-      city: getRandomCity()
+      city: getRandomCity(),
+      //location: splitCityName(city)
+      
     }; 
   } 
 
   componentDidMount() {
-    
-    
-    //fetch('https://api.unsplash.com/photos/?client_id=' + process.env.REACT_APP_API_KEY)  
+
     console.log('Shown City:  ' + this.state.city)
     fetch('https://api.unsplash.com/search/photos/?page=1$per_page=1&query=' + this.state.city + '&client_id=' + process.env.REACT_APP_API_KEY)
       .then(response => response.json())
@@ -36,29 +36,48 @@ class App extends Component {
         this.setState({ imgs: data.results });
       })
       .catch(err => {
-        console.log('Error happened during fetching!', err);
+        console.log('Error happened during fetching from unsplash!', err);
       });
+
+
+    
+    fetch('http://api.openweathermap.org/data/2.5/weather?q=London' + '&units=imperial&apiKey=' + process.env.OPENWEATHER_APP_API_KEY)
+    .then(response => response.json())
+    .then(data => {
+      this.setState({ weather: data.main.temp});
+    })
+    .catch(err => {
+      console.log('Error happened during fetching from open weather!', err);
+    }); 
   }
+  
   render() {
     return (
       <div>
-        
+        {this.state.weather}
         <ImageGrid data={this.state.imgs} />
         {this.state.city}
-        <Welcome></Welcome>
-        <Information></Information>
-
-      </div>
-       
+        <CityName data={this.state.city}></CityName>
+        <Weather data={this.state.weather}></Weather>
+      </div>  
     );
   } 
 }
 
+// Gets a random city from a predefined list
 function getRandomCity() {
   var length = citiesArray.length;
   var randomNumber = Math.floor(Math.random() * length); 
   console.log(randomNumber)
   return citiesArray[randomNumber]
+}
+
+// Only use cityname
+function splitCityName(location) {
+  var localArray;
+  localArray = location.split(",")
+  return localArray[0]
+
 }
 
 export default App;
