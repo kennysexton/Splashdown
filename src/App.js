@@ -3,7 +3,6 @@
 
 import React, { Component } from 'react';
 
-
 import './App.css';
 
 //My Components
@@ -30,7 +29,7 @@ class App extends Component {
   componentDidMount() {
 
     console.log('Shown City:  ' + this.state.city)
-    fetch('https://api.unsplash.com/search/photos/?page=1$per_page=1&query=' + this.state.city + '&client_id=' + process.env.REACT_APP_API_KEY)
+    fetch('https://api.unsplash.com/search/photos/?page=1$per_page=1&query=' + this.state.city + '&client_id=' + process.env.REACT_APP_UNSPLASH_KEY)
       .then(response => response.json())
       .then(data => {
         this.setState({ imgs: data.results });
@@ -39,9 +38,8 @@ class App extends Component {
         console.log('Error happened during fetching from unsplash!', err);
       });
 
-
     
-    fetch('http://api.openweathermap.org/data/2.5/weather?q=London' + '&units=imperial&apiKey=' + process.env.OPENWEATHER_APP_API_KEY)
+    fetch('https://api.openweathermap.org/data/2.5/weather?q=London' + '&units=imperial&apiKey=' + process.env.REACT_APP_OPEN_WEATHER_KEY)
     .then(response => response.json())
     .then(data => {
       this.setState({ weather: data.main.temp});
