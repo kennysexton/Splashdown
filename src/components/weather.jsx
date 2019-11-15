@@ -6,10 +6,10 @@ export default class Weather extends Component {
     }
     render() {
         return (
-        
-        <button  href="#colordiv" data-aos="fade-up" data-aos-duration="1000" className="flight-information">
-            {this.props.data}
-        </button>
+        // data-aos="fade-up" data-aos-duration="1000"
+        <div className="flight-information">
+            <h2>{this.props.data}</h2>
+        </div>
             
         );
     }

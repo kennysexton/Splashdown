@@ -21,8 +21,6 @@ class App extends Component {
     this.state = {
       imgs: [],
       city: getRandomCity(),
-      //location: splitCityName(city)
-      
     }; 
   } 
 
@@ -39,24 +37,27 @@ class App extends Component {
       });
 
     
-    fetch('https://api.openweathermap.org/data/2.5/weather?q=London' + '&units=imperial&apiKey=' + process.env.REACT_APP_OPEN_WEATHER_KEY)
+    fetch('https://api.openweathermap.org/data/2.5/weather?q=' + this.state.city + '&units=imperial&apiKey=' + process.env.REACT_APP_OPEN_WEATHER_KEY)
     .then(response => response.json())
     .then(data => {
       this.setState({ weather: data.main.temp});
+      this.setState({icon: data.weather.icon});
     })
     .catch(err => {
       console.log('Error happened during fetching from open weather!', err);
     }); 
+    console.log(' = '  +  this.state.icon)
   }
   
   render() {
     return (
       <div>
-        {this.state.weather}
         <ImageGrid data={this.state.imgs} />
-        {this.state.city}
-        <CityName data={this.state.city}></CityName>
-        <Weather data={this.state.weather}></Weather>
+        {/* <div className="bottomBar"> */}
+          <CityName data={this.state.city}></CityName>
+          <Weather data={this.state.weather}></Weather>
+        {/* </div> */}
+        
       </div>  
     );
   } 
@@ -70,12 +71,5 @@ function getRandomCity() {
   return citiesArray[randomNumber]
 }
 
-// Only use cityname
-function splitCityName(location) {
-  var localArray;
-  localArray = location.split(",")
-  return localArray[0]
-
-}
 
 export default App;

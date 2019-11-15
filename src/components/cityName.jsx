@@ -6,12 +6,10 @@ export default class CityName extends Component {
     }
     render() {
         return (
-        <div className="Blur">
+            //data-aos="fade-up" data-aos-duration="1000"
             <header className="City-Name">
-            <h1>{this.props.data}</h1>
+                <h1>{this.props.data}</h1>
             </header>
-            
-        </div>
         );
     }
 }
