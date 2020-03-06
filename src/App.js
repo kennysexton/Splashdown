@@ -41,23 +41,20 @@ class App extends Component {
     .then(response => response.json())
     .then(data => {
       this.setState({ weather: data.main.temp});
-      this.setState({icon: data.weather.icon});
+      this.setState({icon: data.weather[0].icon});
     })
     .catch(err => {
       console.log('Error happened during fetching from open weather!', err);
     }); 
-    console.log(' = '  +  this.state.icon)
   }
   
   render() {
     return (
       <div>
         <ImageGrid data={this.state.imgs} />
-        {/* <div className="bottomBar"> */}
+
           <CityName data={this.state.city}></CityName>
-          <Weather data={this.state.weather}></Weather>
-        {/* </div> */}
-        
+          <Weather weather={this.state.weather} icon={this.state.icon}></Weather>
       </div>  
     );
   } 
@@ -71,5 +68,11 @@ function getRandomCity() {
   return citiesArray[randomNumber]
 }
 
+
+// Roud decimal
+function round(input) {
+  var number = Math.round(input * 10) / 10;
+  return number;
+}
 
 export default App;

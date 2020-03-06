@@ -8,7 +8,8 @@ export default class Weather extends Component {
         return (
         // data-aos="fade-up" data-aos-duration="1000"
         <div className="flight-information">
-            <h2>{this.props.data}</h2>
+            <h2>{this.props.weather}</h2>
+            <img src={'http://openweathermap.org/img/wn/' + this.props.icon + '@2x.png'}/>
         </div>
             
         );
