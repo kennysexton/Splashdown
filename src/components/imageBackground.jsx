@@ -1,7 +1,7 @@
 import React from 'react';
 import Img from './img';
 
-const ImgageBackground = props => {
+const ImageBackground = props => {
 	const results = props.data;
 	let imgs = results.map(img => <Img 
 		url={img.urls.full}
@@ -26,4 +26,4 @@ const ImgageBackground = props => {
 		</section>
 	);
 };
-export default ImgageBackground;
+export default ImageBackground;
