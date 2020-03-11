@@ -2,18 +2,18 @@
   color: #61dafb;
 }
 
-.City-Name{
+.City-Name {
   position: fixed;
   bottom: 1%;
   left: 1%;
-  font-size: 2vh; 
+  font-size: 2vh;
   color: white;
 }
 
 .weather-information {
   position: fixed;
   display: flex;
-  flex-direction:row;
+  flex-direction: row;
   right: 1%;
   bottom: 0%;
   font-size: 2vh;
@@ -22,24 +22,32 @@
   color: white;
 }
 
-.weather-icon{
+.weather-icon {
   max-height: 50px;
 }
 
 .bg {
-  position: absolute;
-  width: 100%;
-  min-height: 100vh;
-  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 h1, h2 {
   margin-block-start: 0.0em;
   margin-block-end: 0.0em;
-  text-shadow: 4px 8px 10px rgba(0,0,0,0.4);
+  text-shadow: 4px 8px 10px rgba(0, 0, 0, 0.4);
+}
+
+h3 {
+  margin-block-start: 0.0em;
+  margin-block-end: 0.0em;
+  padding: 5%;
 }
 
 h2 {
   margin: auto;
-  font-size: 2.5vh; 
+  font-size: 2.5vh;
 }
