@@ -4,7 +4,8 @@
 
 Splashdown works by selecting a random city from a list of cities.  Then fetching an **unsplash** image taken in that city as well as the current weather information from **Open Weather**.  Each time the page is loaded the process repeats.
 
----
+<br>
+
 ### APIs
 
 
@@ -12,7 +13,7 @@ Splashdown works by selecting a random city from a list of cities.  Then fetchin
 
 [Open Weather](https://openweathermap.org/api) - Detailed weather information, including icons
 
----
+<br>
 
 ### Pipline 
 
@@ -20,7 +21,7 @@ Splashdown works by selecting a random city from a list of cities.  Then fetchin
 
 * Ability to switch units
 
-* show additonal weather information
+* show additional weather information
 
 * photographer credits
 
