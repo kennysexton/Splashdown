@@ -1,5 +1,6 @@
 # Splashdown
 
+![Singapore example](https://imgur.com/iovYWqR.jpg)
 
 A `Create React App` project
 
