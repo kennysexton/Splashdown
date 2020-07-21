@@ -17,7 +17,7 @@ Splashdown works by selecting a random city from a list of cities.  Then fetchin
 
 ### Pipline 
 
-* Add a ranking system so that as an example cityscapes are prioritized over portraits
+* Add a ranking system - ex.) cityscapes are prioritized over portraits
 
 * Ability to switch units
 
