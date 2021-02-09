@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 
 export default class Weather extends Component {
-    constructor(props) {
-        super(props);
-    }
+
     render() {
         return (
             // data-aos="fade-up" data-aos-duration="1000"
