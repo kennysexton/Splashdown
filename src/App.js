@@ -19,13 +19,13 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      hidden: false,
+      hidden: true,
       imgs: [],
       city: getRandomCity(),
     };
   }
 
-  toggleHidden () {
+  toggleHidden() {
     this.setState({
       hidden: !this.state.hidden
     })
@@ -58,16 +58,18 @@ class App extends Component {
       <div>
         <ImageBackground data={this.state.imgs} />
 
-        {/* Displays the name of the city */}
-        <CityName data={this.state.city}/>
+        <div onClick={this.toggleHidden.bind(this)}>  
+          {/* Displays the name of the city */}
+          <CityName data={this.state.city} />
 
-        {/* Shows weather information */}
-        <div onClick={this.toggleHidden.bind(this)}>
+          {/* Shows weather information */}
+
           <Weather weather={round(this.state.weather) + "°F"} icon={this.state.icon}></Weather>
         </div>
 
         {/* Shows settings and credits */}
-        {!this.state.hidden && <SettingsModal/>}
+        {!this.state.hidden && <SettingsModal />}
+        <div className="bottomGradient"></div>
       </div>
     );
   }
