@@ -1,5 +1,5 @@
 import React from 'react';
-import Img from './img';
+import Img from './Img';
 
 const ImageBackground = props => {
 	const results = props.data;

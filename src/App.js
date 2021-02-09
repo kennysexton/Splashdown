@@ -7,9 +7,9 @@ import './App.css';
 import './components/settingsModal.css'
 
 //My Components
-import CityName from './components/cityName'
-import ImageBackground from './components/imageBackground'
-import Weather from './components/weather'
+import CityName from './components/CityName'
+import ImageBackground from './components/ImageBackground'
+import Weather from './components/Weather'
 import SettingsModal from './components/SettingsModal';
 
 // List of cities

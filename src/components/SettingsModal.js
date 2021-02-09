@@ -7,7 +7,6 @@ function SettingsModal() {
     const [symbol, setSymbol] = useState("°F");
     const [color, setColor] = useState(color1);
 
-
     return (
         <div className="settings-menu">
             <div className="setting-menu-content">
