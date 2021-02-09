@@ -1,8 +1,12 @@
 import React, { useState } from 'react'
 
 function SettingsModal() {
+    const color1 = "#C2E66E"
+    const color2 = "#96e6a1"
     const [unit, setUnit] = useState("imperial");
     const [symbol, setSymbol] = useState("°F");
+    const [color, setColor] = useState(color1);
+
 
     return (
         <div className="settings-menu">
@@ -12,20 +16,20 @@ function SettingsModal() {
                     <input onChange={() => flipUnit()} value={unit} type="checkbox" />
                     <span className="slider round" > </span>
                 </label>
-                <h4>{symbol}</h4>
+                <h4 style={{ color: { color }.color }}>{symbol}</h4>
             </div>
         </div>
     );
 
     function flipUnit() {
         if ({ unit }.unit !== "metric") {
-            console.log("flip to metric")
             setUnit("metric")
             setSymbol("°C")
+            setColor(color2)
         } else {
-            console.log("flip to imperial")
             setUnit("imperial")
             setSymbol("°F")
+            setColor(color1)
         }
     }
 }
