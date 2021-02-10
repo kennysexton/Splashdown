@@ -20,7 +20,7 @@ function App() {
   const firstCity = getRandomCity()
 
   const [city] = useState(firstCity);
-  const [hidden, setHidden] = useState(true);
+  const [hidden, setHidden] = useState(false);
   const [imgs, setImgs] = useState([]);
   const [temperature, setTemperature] = useState(null);
   const [icon, setIcon] = useState(null);
@@ -29,11 +29,12 @@ function App() {
   // ComponentDidMount() replacement
   useEffect(() => {
     console.log('Shown City:  ' + city)
-    fetch('https://api.unsplash.com/search/photos/?page=1$per_page=1&query=' + city + '&client_id=' + process.env.REACT_APP_UNSPLASH_KEY)
+    fetch('https://api.unsplash.com/search/photos/?page=1$per_page=1&quer=' + city + '&client_id=' + process.env.REACT_APP_UNSPLASH_KEY)
       .then(response => response.json())
       .then(data => {
         console.log("-- Image API returned")
-        setImgs(data.results);
+        console.log(data.results[0].urls)
+        setImgs(data.results[0].urls);
         setLoading(false)
       })
       .catch(err => {
@@ -59,7 +60,6 @@ function App() {
     var randomNumber = Math.floor(Math.random() * length);
     console.log(`City Selection number: ${randomNumber}`)
     console.log(citiesArray[randomNumber])
-    // setCity(citiesArray[randomNumber])
     return citiesArray[randomNumber]
   }
 
@@ -69,9 +69,9 @@ function App() {
     return number;
   }
 
-  function toggleHidden(hidden) {
+  function toggleHidden() {
     console.log(`inside toggle hidden`)
-    setHidden(!{ hidden });
+    setHidden(({hidden}) => !{ hidden });
   };
 
 
@@ -88,7 +88,7 @@ function App() {
               <CityName data={city} />
 
               {/* Shows weather information */}
-              <Weather weather={`${round(temperature)} °F`} icon={icon}></Weather>
+              <Weather weather={`${round(temperature)}°F`} icon={icon}></Weather>
             </div>
 
             {/* Shows settings and credits */}

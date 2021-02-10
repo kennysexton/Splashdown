@@ -1,21 +1,12 @@
 import React from 'react';
-import Img from './Img';
 
-const ImageBackground = props => {
-	const results = props.data;
-	let imgs = results.map(img => <Img
-		url={img.urls.full}
-		alt={img.alt_description}
-		user={img.user.links.html}
-		name={img.user.name}
-		width={img.width}
-		height={img.height}
-		key={img.id} />);
+// Uses css inline styling to take advantage of this method css centering
+const ImageBackground = props => (
+        <div style={{
+                background: 'url(' + props.data.full + ') no-repeat center center fixed',
+                backgroundSize: "cover"
+        }} className="bg">
+        </div>
+);
 
-	return (
-		<div>
-			{imgs[0]}
-		</div>
-	);
-};
 export default ImageBackground;
