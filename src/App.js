@@ -17,74 +17,88 @@ const citiesArray = ["Hong Kong, Hong Kong", "Singapore", "Bangkok, Thailand", "
 
 function App() {
 
+  const firstCity = getRandomCity()
+
+  const [city] = useState(firstCity);
   const [hidden, setHidden] = useState(true);
   const [imgs, setImgs] = useState([]);
-  const [city, setCity] = useState(getRandomCity());
-  const [weather, setWeather] = useState(null);
+  const [temperature, setTemperature] = useState(null);
   const [icon, setIcon] = useState(null);
+  const [loading, setLoading] = useState(false)
 
-  function toggleHidden(hidden) {
-    setHidden(!{ hidden });
-
-    // this.setState({
-    //   hidden: !this.state.hidden
-    // })
-  };
-
+  // ComponentDidMount() replacement
   useEffect(() => {
-    console.log('Shown City:  ' + { city })
-    fetch('https://api.unsplash.com/search/photos/?page=1$per_page=1&query=' + { city } + '&client_id=' + process.env.REACT_APP_UNSPLASH_KEY)
+    console.log('Shown City:  ' + city)
+    fetch('https://api.unsplash.com/search/photos/?page=1$per_page=1&query=' + city + '&client_id=' + process.env.REACT_APP_UNSPLASH_KEY)
       .then(response => response.json())
       .then(data => {
+        console.log("-- Image API returned")
         setImgs(data.results);
+        setLoading(false)
       })
       .catch(err => {
         console.error(`Error happened during fetching from unsplash! ${err}`);
       });
 
-    fetch('https://api.openweathermap.org/data/2.5/weather?q=' + { city } + '&units=imperial&apiKey=' + process.env.REACT_APP_OPEN_WEATHER_KEY)
+    fetch('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=imperial&apiKey=' + process.env.REACT_APP_OPEN_WEATHER_KEY)
       .then(response => response.json())
       .then(data => {
-        setWeather(data.main.temp);
+        console.log(`-- Weather API returned ${data.main.temp}`)
+        setTemperature(data.main.temp);
         setIcon(data.weather[0].icon);
       })
       .catch(err => {
         console.error(`Error happened during fetching from open weather! ${err}`);
       });
-  }, []);
+  }, [city]);
+
+
+  // Gets a random city from a predefined list
+  function getRandomCity() {
+    var length = citiesArray.length;
+    var randomNumber = Math.floor(Math.random() * length);
+    console.log(`City Selection number: ${randomNumber}`)
+    console.log(citiesArray[randomNumber])
+    // setCity(citiesArray[randomNumber])
+    return citiesArray[randomNumber]
+  }
+
+  // Roud decimal
+  function round(input) {
+    var number = Math.round(input);
+    return number;
+  }
+
+  function toggleHidden(hidden) {
+    console.log(`inside toggle hidden`)
+    setHidden(!{ hidden });
+  };
+
 
   return (
     <div>
-      <ImageBackground data={imgs} />
+      {loading ? (
+        <div>Data Loading.....</div>
+      ) : (
+          <div>
+            <ImageBackground data={imgs} />
 
-      <div onClick={() => toggleHidden()}>
-      {/* Displays the name of the city */}
-      <CityName data={city} />
+            <div onClick={() => toggleHidden()}>
+              {/* Displays the name of the city */}
+              <CityName data={city} />
 
-      {/* Shows weather information */}
+              {/* Shows weather information */}
+              <Weather weather={`${round(temperature)} °F`} icon={icon}></Weather>
+            </div>
 
-      <Weather weather={round({ weather }) + "°F"} icon={icon}></Weather>
-      </div>
-
-      {/* Shows settings and credits */}
-      {!{ hidden } && <SettingsModal />}
-      <div className="bottomGradient"></div>
+            {/* Shows settings and credits */}
+            {!{ hidden } && <SettingsModal />}
+            <div className="bottomGradient"></div>
+          </div>
+        )}
     </div>
+
   );
-}
-
-// Gets a random city from a predefined list
-function getRandomCity() {
-  var length = citiesArray.length;
-  var randomNumber = Math.floor(Math.random() * length);
-  console.log(randomNumber)
-  return citiesArray[randomNumber]
-}
-
-// Roud decimal
-function round(input) {
-  var number = Math.round(input);
-  return number;
 }
 
 export default App;
