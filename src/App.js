@@ -22,6 +22,7 @@ function App() {
 
   // Unsplash
   const [imgs, setImgs] = useState("");
+  const [photographer, setPhotographer] = useState("")
   const [photographerLink, setPhotographerLink] = useState("")
   const [unsplashLink, setUnsplashLink] = useState("")
 
@@ -41,9 +42,11 @@ function App() {
     fetch(unsplashQuery)
       .then(response => response.json())
       .then(data => {
-        setImgs(data.results[0].urls);
-        setPhotographerLink(data.results[0].user.links.html)
-        setUnsplashLink(data.results[0].links.html)
+        const result = data.results[0]
+        setImgs(result.urls);
+        setPhotographerLink(result.user.links.html)
+        setUnsplashLink(result.links.html)
+        setPhotographer(result.user.name)
 
         setLoading(false) // TODO move this trigger to imageBackground componenet to represent to load
       })
@@ -83,7 +86,7 @@ function App() {
       </div>
 
       {/* Shows settings and credits */}
-      {hidden ? <div></div> : <SettingsModal photographer={photographerLink} unsplashLink={unsplashLink} />}
+      {hidden ? <div></div> : <SettingsModal photographerLink={photographerLink} name={photographer} unsplashLink={unsplashLink} />}
       <div className="bottomGradient"></div>
 
     </div>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function SettingsModal() {
+function SettingsModal(props) {
     const color1 = "#C2E66E"
     const color2 = "#96e6a1"
     const [unit, setUnit] = useState("imperial");
@@ -16,6 +16,7 @@ function SettingsModal() {
                     <span className="slider round" > </span>
                 </label>
                 <h4 style={{ color: { color }.color }}>{symbol}</h4>
+                <h5 >Photo by <a href={props.photographer}>{props.name}</a> on Unsplash</h5>
             </div>
         </div>
     );
