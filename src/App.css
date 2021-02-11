@@ -64,3 +64,10 @@ h2 {
   background: linear-gradient(0deg, rgba(0,0,0,.2) 0%, rgba(255,255,255,0) 100%);
   z-index: 1; /* above background, but below title */  
 }
+
+@media only screen and (max-width: 600px) {
+  h1{
+    font-size: 1.45em;
+    margin-bottom: 1%;
+  }
+}

@@ -8,7 +8,6 @@ Splashdown works by selecting a random city from a list of cities.  Then fetchin
 
 ### APIs
 
-
 [Unsplash](https://unsplash.com/developers) - Free repository of high-resolution stock photos
 
 [Open Weather](https://openweathermap.org/api) - Detailed weather information, including icons
@@ -23,6 +22,6 @@ Splashdown works by selecting a random city from a list of cities.  Then fetchin
 
 - [ ] show additional weather information
 
-- [ ] photographer credits ([Unsplash API Guidelines](https://help.unsplash.com/en/articles/2511245-unsplash-api-guidelines))
-
 - [ ] refresh button
+
+- [x] photographer credits ([Unsplash API Guidelines](https://help.unsplash.com/en/articles/2511245-unsplash-api-guidelines))
