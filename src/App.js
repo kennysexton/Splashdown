@@ -18,17 +18,21 @@ import SettingsModal from './components/SettingsModal';
 
 function App() {
 
-  // Variables
   const [city, setCity] = useState(null);
+
+  // Unsplash
   const [imgs, setImgs] = useState("");
+  const [photographerLink, setPhotographerLink] = useState("")
+  const [unsplashLink, setUnsplashLink] = useState("")
+
+  // OpenWeather
   const [temperature, setTemperature] = useState(null);
   const [icon, setIcon] = useState(null);
 
-  //Visibility
-  const [hidden, setHidden] = useState(false);
+  //Visibility Toggles
+  const [hidden, setHidden] = useState(true);
   const [loading, setLoading] = useState(true)
 
-  // ComponentDidMount() replacement
   useEffect(() => {
     const randomCity = getRandomCity()
     setCity(randomCity)
@@ -37,10 +41,10 @@ function App() {
     fetch(unsplashQuery)
       .then(response => response.json())
       .then(data => {
-        console.log("-- Image API returned")
-        console.log(data.results[0].user.links.html)
         setImgs(data.results[0].urls);
-        console.log()
+        setPhotographerLink(data.results[0].user.links.html)
+        setUnsplashLink(data.results[0].links.html)
+
         setLoading(false) // TODO move this trigger to imageBackground componenet to represent to load
       })
       .catch(err => {
@@ -51,27 +55,24 @@ function App() {
     fetch(openWeatherQuery)
       .then(response => response.json())
       .then(data => {
-        console.log(`-- Weather API returned ${data.main.temp}`)
         setTemperature(data.main.temp);
         setIcon(data.weather[0].icon);
       })
       .catch(err => {
-        console.error(`Error happened during fetching from open weather! ${err}`);
+        console.error(`OpenWeather API error (${err})! Query: ${openWeatherQuery}`);
       });
   }, []);
 
   function toggleHidden() {
-    console.log(`inside toggle hidden`)
-    setHidden(({ hidden }) => !{ hidden });
+    console.log(`inside toggle hidden - ${hidden}`)
+    setHidden(hidden => !hidden);
   };
 
   return (
     <div>
-      {loading ? (
-        <Spinner></Spinner>
-      ) : (
-          <ImageBackground data={imgs} />
-        )}
+      {loading ? (<Spinner></Spinner>) : (
+        <ImageBackground data={imgs} />
+      )}
 
       <div onClick={() => toggleHidden()}>
         {/* Displays the name of the city */}
@@ -82,7 +83,7 @@ function App() {
       </div>
 
       {/* Shows settings and credits */}
-      {!{ hidden } && <SettingsModal />}
+      {hidden ? <div></div> : <SettingsModal photographer={photographerLink} unsplashLink={unsplashLink} />}
       <div className="bottomGradient"></div>
 
     </div>
