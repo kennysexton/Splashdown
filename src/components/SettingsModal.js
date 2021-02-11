@@ -16,7 +16,7 @@ function SettingsModal(props) {
                     <span className="slider round" > </span>
                 </label>
                 <h4 style={{ color: { color }.color }}>{symbol}</h4>
-                <h5 >Photo by <a href={props.photographer}>{props.name}</a> on Unsplash</h5>
+                <h5 >Photo by <a href={props.photographerLink}>{props.name}</a> on <a href={props.unsplashLink}>Unsplash</a></h5>
             </div>
         </div>
     );

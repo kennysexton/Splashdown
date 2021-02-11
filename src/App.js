@@ -18,6 +18,7 @@ import SettingsModal from './components/SettingsModal';
 
 function App() {
 
+  const linkBackAttribute = "?utm_source=Splashdown&utm_medium=referral"
   const [city, setCity] = useState(null);
 
   // Unsplash
@@ -44,8 +45,8 @@ function App() {
       .then(data => {
         const result = data.results[0]
         setImgs(result.urls);
-        setPhotographerLink(result.user.links.html)
-        setUnsplashLink(result.links.html)
+        setPhotographerLink(result.user.links.html + linkBackAttribute)
+        setUnsplashLink(result.links.html + linkBackAttribute)
         setPhotographer(result.user.name)
 
         setLoading(false) // TODO move this trigger to imageBackground componenet to represent to load
@@ -67,7 +68,6 @@ function App() {
   }, []);
 
   function toggleHidden() {
-    console.log(`inside toggle hidden - ${hidden}`)
     setHidden(hidden => !hidden);
   };
 
