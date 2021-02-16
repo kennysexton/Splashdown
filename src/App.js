@@ -18,7 +18,9 @@ import SettingsModal from './components/SettingsModal';
 
 function App() {
 
+  // Unsplash backlink guidelines
   const linkBackAttribute = "?utm_source=Splashdown&utm_medium=referral"
+
   const [city, setCity] = useState(null);
 
   // Unsplash
@@ -30,6 +32,7 @@ function App() {
   // OpenWeather
   const [temperature, setTemperature] = useState(null);
   const [icon, setIcon] = useState(null);
+  const [units, setUnits] = useState({ type: "imperial", symbol: "°F" });
 
   //Visibility Toggles
   const [hidden, setHidden] = useState(true);
@@ -38,8 +41,8 @@ function App() {
   useEffect(() => {
     const randomCity = getRandomCity()
     setCity(randomCity)
-    console.log('Shown City:  ' + randomCity)
-    const unsplashQuery = 'https://api.unsplash.com/search/photos/?page=1$per_page=1&query=' + randomCity + '&client_id=' + process.env.REACT_APP_UNSPLASH_KEY
+    console.log(`Shown City:  ${randomCity}`)
+    const unsplashQuery = `https://api.unsplash.com/search/photos/?page=1$per_page=1&query=${randomCity}&client_id=${process.env.REACT_APP_UNSPLASH_KEY}`
     fetch(unsplashQuery)
       .then(response => response.json())
       .then(data => {
@@ -55,7 +58,7 @@ function App() {
         console.error(`Unsplash API error (${err})! Query: ${unsplashQuery}`);
       });
 
-    const openWeatherQuery = 'https://api.openweathermap.org/data/2.5/weather?q=' + randomCity + '&units=imperial&apiKey=' + process.env.REACT_APP_OPEN_WEATHER_KEY
+    const openWeatherQuery = `https://api.openweathermap.org/data/2.5/weather?q=${randomCity}&units=${units.type}&apiKey=${process.env.REACT_APP_OPEN_WEATHER_KEY}`
     fetch(openWeatherQuery)
       .then(response => response.json())
       .then(data => {
@@ -66,10 +69,6 @@ function App() {
         console.error(`OpenWeather API error (${err})! Query: ${openWeatherQuery}`);
       });
   }, []);
-
-  function toggleHidden() {
-    setHidden(hidden => !hidden);
-  };
 
   return (
     <div>
@@ -82,15 +81,39 @@ function App() {
         <CityName data={city} />
 
         {/* Shows weather information */}
-        <Weather weather={`${round(temperature)}°F`} icon={icon}></Weather>
+        <Weather weather={`${round(temperature)}${units.symbol}`} icon={icon}></Weather>
       </div>
 
       {/* Shows settings and credits */}
-      {hidden ? <div></div> : <SettingsModal photographerLink={photographerLink} name={photographer} unsplashLink={unsplashLink} />}
+      {hidden ? <div></div> : <SettingsModal photographerLink={photographerLink}
+        name={photographer}
+        unsplashLink={unsplashLink}
+        units={units}
+        onChange={(units) => convertUnits(units)} />}
       <div className="bottomGradient"></div>
 
     </div>
   );
+
+  function toggleHidden() {
+    setHidden(hidden => !hidden);
+  };
+
+  // Do this math locally instead of refetching from API
+  function convertUnits(units) {
+    switch (units.type) {
+      case "metric":
+        setTemperature((temperature - 32) / 1.8)
+        break;
+      case "imperial":
+        setTemperature((temperature * 1.8) + 32)
+        break;
+      default:
+        console.error(`${units.type} is not valid`)
+        break;
+    }
+    setUnits(units)
+  }
 }
 
 export default App;
