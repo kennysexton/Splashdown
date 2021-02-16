@@ -18,10 +18,10 @@ Splashdown works by selecting a random city from a list of cities.  Then fetchin
 
 - [ ] Add tag based ranking system - ex.) cityscapes are prioritized over portraits
 
-- [ ] Ability to switch units
+- [ ] Save user unit preferences
 
 - [ ] show additional weather information
 
-- [ ] refresh button
+- [x] Ability to switch units
 
 - [x] photographer credits ([Unsplash API Guidelines](https://help.unsplash.com/en/articles/2511245-unsplash-api-guidelines))
