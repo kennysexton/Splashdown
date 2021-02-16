@@ -8,7 +8,6 @@ Splashdown works by selecting a random city from a list of cities.  Then fetchin
 
 ### APIs
 
-
 [Unsplash](https://unsplash.com/developers) - Free repository of high-resolution stock photos
 
 [Open Weather](https://openweathermap.org/api) - Detailed weather information, including icons
@@ -17,12 +16,12 @@ Splashdown works by selecting a random city from a list of cities.  Then fetchin
 
 ### Pipline 
 
-* Add a ranking system - ex.) cityscapes are prioritized over portraits
+- [ ] Add tag based ranking system - ex.) cityscapes are prioritized over portraits
 
-* Ability to switch units
+- [ ] Save user unit preferences
 
-* show additional weather information
+- [ ] show additional weather information
 
-* photographer credits
+- [x] Ability to switch units
 
-* refresh button
+- [x] photographer credits ([Unsplash API Guidelines](https://help.unsplash.com/en/articles/2511245-unsplash-api-guidelines))
