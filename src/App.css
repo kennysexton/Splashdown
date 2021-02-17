@@ -30,7 +30,11 @@
   max-height: 50px;
 }
 
+/* background property replacement - https://stackoverflow.com/a/31267758/8890753 */
 .bg {
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
   height: 100vh;
   width: 100vw;
 }

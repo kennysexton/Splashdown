@@ -10,12 +10,11 @@ function ImageBackground(props) {
         loading ? (<Spinner></Spinner>) : (
             <div className="bg">
                 <img src={props.data.full} style={{
+                    pointerEvents: 'none',
+                    position: 'absolute',
                     minWidth: '100%',
-                    maxWidth: '100%',
-                    overflow: 'none',
-                    objectFit: 'contain',
-                    background: 'center center no-repeat'
-                    
+                    height: '100%',
+                    objectFit: 'cover'
                 }}>
                 </img>
             </div >)
