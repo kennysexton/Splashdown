@@ -94,14 +94,15 @@ function App() {
 
     return (
         <div>
+            <ImageBackground data={imgs} />
 
-            <ImageBackground data={imgs}/>
+            <div onClick={() => toggleHidden()}>
+                {/* Displays the name of the city */}
+                <CityName data={city} />
 
-            {/* Displays the name of the city */}
-            <CityName data={city} />
-
-            {/* Shows weather information */}
-            <Weather weather={`${round(temperature)}${units.symbol}`} icon={icon}></Weather>
+                {/* Shows weather information */}
+                <Weather weather={`${round(temperature)}${units.symbol}`} icon={icon}></Weather>
+            </div>
 
             {/* Shows settings and credits */}
             {hidden ? <div></div> : <SettingsModal photographerLink={photographerLink}
@@ -110,9 +111,12 @@ function App() {
                 units={units}
                 onChange={(units) => convertUnits(units)} />}
             <div className="bottomGradient"></div>
-
         </div>
     );
+
+    function toggleHidden() {
+        setHidden(hidden => !hidden);
+    };
 
     // Do this math locally instead of refetching from API
     function convertUnits(units) {
