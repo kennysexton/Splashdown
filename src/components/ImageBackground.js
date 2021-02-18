@@ -1,12 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Spinner from './Spinner'
 
 // Uses css inline styling to take advantage of this method css centering
-const ImageBackground = props => (
-        <div style={{
-                background: 'url(' + props.data.full + ') no-repeat center center fixed',
-                backgroundSize: "cover"
-        }} className="bg">
+function ImageBackground(props) {
+
+    const [loading] = useState(true)
+
+    return (
+        <div>
+            {loading && <Spinner></Spinner>}
+            <div className="bg">
+                <img src={props.data.full} alt="" style={{
+                    pointerEvents: 'none',
+                    position: 'absolute',
+                    minWidth: '100%',
+                    maxWidth: '100%',
+                    height: '100%',
+                    objectFit: 'cover'
+                }}>
+                </img>
+            </div >
         </div>
-);
+
+    );
+
+}
 
 export default ImageBackground;
