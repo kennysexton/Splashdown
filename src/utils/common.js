@@ -5,8 +5,7 @@ const citiesArray = ["Hong Kong, Hong Kong", "Singapore", "Bangkok, Thailand", "
 export function getRandomCity() {
     var length = citiesArray.length;
     var randomNumber = Math.floor(Math.random() * length);
-    console.log(`City Selection number: ${randomNumber}`)
-    console.log(citiesArray[randomNumber])
+    console.log(`Shown City - ${citiesArray[randomNumber]} (${randomNumber})`)
     return citiesArray[randomNumber]
 }
 

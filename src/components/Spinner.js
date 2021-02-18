@@ -1,7 +1,6 @@
 import React from 'react'
 
 function Spinner() {
-
     return (
         <div className="sk-folding-cube">
             <div className="sk-cube1 sk-cube"></div>
@@ -9,7 +8,6 @@ function Spinner() {
             <div className="sk-cube4 sk-cube"></div>
             <div className="sk-cube3 sk-cube"></div>
         </div>
-
     );
 }
 

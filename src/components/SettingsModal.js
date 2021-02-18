@@ -4,7 +4,7 @@ function SettingsModal(props) {
 
     // Color handled at this component,  rest of state comes from parent
     const color1 = "#C2E66E"
-    const color2 = "#96e6a1"
+    const color2 = "#96E6A1"
     const [color, setColor] = useState(color1);
 
     return (
@@ -26,10 +26,15 @@ function SettingsModal(props) {
         if (props.units.type !== "metric") {
             units.type = "metric"
             units.symbol = "°C"
-            setColor(color2)
         } else {
             units.type = "imperial"
             units.symbol = "°F"
+        }
+
+        // Flip color
+        if (color === color1) {
+            setColor(color2)
+        } else {
             setColor(color1)
         }
 
