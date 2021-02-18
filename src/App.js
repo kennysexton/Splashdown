@@ -40,7 +40,7 @@ function App() {
     useEffect(() => {
         const randomCity = getRandomCity()
         setCity(randomCity)
-        console.log(`Shown City - ${randomCity}`)
+
         const unsplashQuery = `https://api.unsplash.com/search/photos/?page=1$per_page=1&query=${randomCity}&client_id=${process.env.REACT_APP_UNSPLASH_KEY}`
         fetch(unsplashQuery)
             .then(response => response.json())
@@ -95,7 +95,7 @@ function App() {
     return (
         <div>
 
-            <ImageBackground data={imgs} />
+            <ImageBackground data={imgs}/>
 
             {/* Displays the name of the city */}
             <CityName data={city} />
