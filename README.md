@@ -14,7 +14,7 @@ Splashdown works by selecting a random city from a list of cities.  Then fetchin
 
 <br>
 
-### Pipline 
+### Features
 
 - [ ] Add tag based ranking system - ex.) cityscapes are prioritized over portraits
 
